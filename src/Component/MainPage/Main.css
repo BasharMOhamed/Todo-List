@@ -1,0 +1,12 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-image {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: -100;
+}

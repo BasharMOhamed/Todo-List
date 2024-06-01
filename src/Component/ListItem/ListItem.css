@@ -1,0 +1,15 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  background-color: hsl(235, 24%, 19%);
+  color: hsl(236, 33%, 92%);
+  width: 100%;
+  border-bottom: solid hsl(233, 14%, 35%) 1px;
+}
+
+.complete {
+  text-decoration: line-through;
+  color: hsl(234, 11%, 52%);
+}

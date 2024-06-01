@@ -1,0 +1,19 @@
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+  border: solid 1px hsl(236, 33%, 92%);
+  background-color: transparent;
+}
+.checked {
+  background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+/*
+img {
+  width: 20px;
+  height: 20px;
+} */
