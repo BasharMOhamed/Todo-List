@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 import Main from "./Component/MainPage/Main";
@@ -10,11 +11,13 @@ function App() {
     { id: 5, Content: "Pick up groceries", complete: false },
     { id: 6, Content: "Complete Todo App on Frontend Mentor", complete: false },
   ];
-  return (
-    <>
-      <Main Todos={list} />
-    </>
-  );
+  const [todos, setTodos] = useState(list);
+
+  const addTodo = (newTodo) => {
+    newTodo.id = todos.length + 1;
+    setTodos([...todos, newTodo]);
+  };
+  return <Main Todos={todos} Add={addTodo} />;
 }
 
 export default App;

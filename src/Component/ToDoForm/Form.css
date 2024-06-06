@@ -1,0 +1,31 @@
+input {
+  background: transparent;
+  font-family: "Josefin Sans", sans-serif;
+  color: hsl(236, 33%, 92%);
+  border: none;
+  width: 100%;
+  font-size: 16px;
+}
+input::placeholder {
+  color: hsl(234, 11%, 52%);
+}
+
+.send-icon {
+  width: 20px;
+}
+.send-btn {
+  background-color: transparent;
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+form {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  background-color: hsl(235, 24%, 19%);
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 5px;
+}
