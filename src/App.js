@@ -17,7 +17,12 @@ function App() {
     newTodo.id = todos.length + 1;
     setTodos([...todos, newTodo]);
   };
-  return <Main Todos={todos} Add={addTodo} />;
+
+  const clearCompleted = () => {
+    const Cleared = todos.filter((todo) => !todo.complete);
+    setTodos(Cleared);
+  };
+  return <Main Todos={todos} Add={addTodo} Clear={clearCompleted} />;
 }
 
 export default App;

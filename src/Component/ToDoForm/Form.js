@@ -32,9 +32,8 @@ const TodoForm = ({ AddTodo }) => {
   };
   return (
     <form onSubmit={submitHandler}>
-      {/* <div className={`item`}> */}
       <CheckCircle complete={completed} Onclick={clickHandler} />
-      {/* <p>{Content}</p> */}
+
       <input
         type="text"
         placeholder="Create a new todo..."
@@ -44,7 +43,6 @@ const TodoForm = ({ AddTodo }) => {
       <button className="send-btn" type="submit">
         <img className="send-icon" src={sendIcon} alt="send icon" />
       </button>
-      {/* </div> */}
     </form>
   );
 };

@@ -7,13 +7,12 @@
   border-radius: 30px;
   border: solid 1px hsl(236, 33%, 92%);
   background-color: transparent;
+  cursor: pointer;
+}
+
+.circle:hover {
+  border-color: hsl(220, 98%, 61%);
 }
 .checked {
   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
-
-/*
-img {
-  width: 20px;
-  height: 20px;
-} */
