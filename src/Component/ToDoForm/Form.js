@@ -7,15 +7,11 @@ const TodoForm = ({ AddTodo, dark }) => {
   const [todo, setTodo] = useState("");
   const clickHandler = () => {
     setCompleted(!completed);
-    console.log("Clicked!!!!");
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("Senddddddddddd");
-    console.log(todo);
     if (todo.trim().length > 0) {
-      console.log("Senddddddddddd in if");
       let item = {
         Content: todo,
         complete: completed,

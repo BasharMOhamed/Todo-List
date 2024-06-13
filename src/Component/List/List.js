@@ -15,6 +15,7 @@ const List = ({ list, Clear, dark, removeTodo }) => {
     }
   }, [list, filteredList, active]);
 
+  // Highlight the filtered Category
   const navigateHandler = (event) => {
     if (event.target.id === "all") {
       setActive(1);
@@ -91,6 +92,7 @@ const List = ({ list, Clear, dark, removeTodo }) => {
           </button>
         </div>
       </div>
+
       <div className={`mobile-btns List-btns ${dark ? "" : "light"}`}>
         <div>
           <button
