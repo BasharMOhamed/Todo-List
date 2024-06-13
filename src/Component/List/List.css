@@ -1,5 +1,4 @@
 .List {
-  /* width: 32rem; */
   border-radius: 5px;
   box-shadow: 0px 5px 20px 10px rgb(0, 0, 0, 0.25);
   overflow: hidden;
@@ -30,4 +29,35 @@
 
 .active {
   color: hsl(220, 98%, 61%);
+}
+
+.light {
+  background-color: white;
+}
+
+.light-btns:hover {
+  color: hsl(235, 19%, 35%);
+}
+
+.mobile-btns {
+  display: flex;
+  box-shadow: 0px 5px 20px 10px rgb(0, 0, 0, 0.25);
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+@media (max-width: 430px) {
+  .Navigation-btns {
+    display: none;
+  }
+  .List {
+    font-size: 12px;
+  }
+
+  .mobile-btns {
+    display: flex;
+  }
 }

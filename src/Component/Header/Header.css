@@ -1,0 +1,12 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  letter-spacing: 10px;
+}
+
+.mode-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

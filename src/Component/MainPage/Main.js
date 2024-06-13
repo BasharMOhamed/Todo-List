@@ -1,14 +1,21 @@
 import List from "../List/List";
-import BackGround from "../../assests/bg-desktop-dark.jpg";
+import darkBackGround from "../../assests/bg-desktop-dark.jpg";
+import lightBackGround from "../../assests/bg-desktop-light.jpg";
 import "./Main.css";
 import TodoForm from "../ToDoForm/Form";
-const Main = ({ Todos, Add, Clear }) => {
+import Header from "../Header/Header";
+const Main = ({ Todos, Add, Clear, dark, changeMode, removeTodo }) => {
   return (
-    <div className="container">
-      <img src={BackGround} alt="background" className="bg-image" />
+    <div className={`container ${dark ? "" : "light"}`}>
+      {dark ? (
+        <img src={darkBackGround} alt="background" className="bg-image" />
+      ) : (
+        <img src={lightBackGround} alt="background" className="bg-image" />
+      )}
       <div className="TodoList-container">
-        <TodoForm AddTodo={Add} />
-        <List list={Todos} Clear={Clear} />
+        <Header dark={dark} changeMode={changeMode} />
+        <TodoForm AddTodo={Add} dark={dark} />
+        <List list={Todos} Clear={Clear} dark={dark} removeTodo={removeTodo} />
       </div>
     </div>
   );

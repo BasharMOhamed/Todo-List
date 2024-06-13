@@ -1,7 +1,7 @@
 import ListItem from "../ListItem/ListItem";
 import "./List.css";
 import { useState, useEffect } from "react";
-const List = ({ list, Clear }) => {
+const List = ({ list, Clear, dark, removeTodo }) => {
   const [active, setActive] = useState(1);
   const [filteredList, setFilteredList] = useState(list);
 
@@ -32,26 +32,73 @@ const List = ({ list, Clear }) => {
   };
 
   return (
-    <div className="List">
-      {filteredList.map((item, index) => {
-        console.log(item.complete);
-        return (
-          <li>
-            <ListItem
-              Content={item.Content}
-              complete={item.complete}
-              clickHandler={() => clickHandler(index)}
-            />
-          </li>
-        );
-      })}
-      <div className="List-btns">
-        <p className="remaining">{filteredList.length} items left</p>
+    <>
+      <div className={`List`}>
+        {filteredList.map((item, index) => {
+          console.log(item.complete);
+          return (
+            <li>
+              <ListItem
+                item={item}
+                Content={item.Content}
+                complete={item.complete}
+                clickHandler={() => clickHandler(index)}
+                dark={dark}
+                removeTodo={removeTodo}
+              />
+            </li>
+          );
+        })}
+        <div className={`List-btns ${dark ? "" : "light"}`}>
+          <p className="remaining">{filteredList.length} items left</p>
+          <div className="Navigation-btns">
+            <button
+              type="button"
+              id="all"
+              className={`btn all-btn ${active === 1 ? "active" : ""} ${
+                dark ? "" : "light-btns"
+              }`}
+              onClick={navigateHandler}
+            >
+              All
+            </button>
+            <button
+              type="button"
+              id="active"
+              className={`btn active-btn ${active === 2 ? "active" : ""} ${
+                dark ? "" : "light-btns"
+              }`}
+              onClick={navigateHandler}
+            >
+              Active
+            </button>
+            <button
+              type="button"
+              id="completed"
+              className={`btn completed-btn ${active === 3 ? "active" : ""} ${
+                dark ? "" : "light-btns"
+              }`}
+              onClick={navigateHandler}
+            >
+              Completed
+            </button>
+          </div>
+          <button
+            className={`btn clear-btn ${dark ? "" : "light-btns"}`}
+            onClick={Clear}
+          >
+            Clear Completed
+          </button>
+        </div>
+      </div>
+      <div className={`mobile-btns List-btns ${dark ? "" : "light"}`}>
         <div>
           <button
             type="button"
             id="all"
-            className={`btn all-btn ${active === 1 ? "active" : ""}`}
+            className={`btn all-btn ${active === 1 ? "active" : ""} ${
+              dark ? "" : "light-btns"
+            }`}
             onClick={navigateHandler}
           >
             All
@@ -59,7 +106,9 @@ const List = ({ list, Clear }) => {
           <button
             type="button"
             id="active"
-            className={`btn active-btn ${active === 2 ? "active" : ""}`}
+            className={`btn active-btn ${active === 2 ? "active" : ""} ${
+              dark ? "" : "light-btns"
+            }`}
             onClick={navigateHandler}
           >
             Active
@@ -67,17 +116,16 @@ const List = ({ list, Clear }) => {
           <button
             type="button"
             id="completed"
-            className={`btn completed-btn ${active === 3 ? "active" : ""}`}
+            className={`btn completed-btn ${active === 3 ? "active" : ""} ${
+              dark ? "" : "light-btns"
+            }`}
             onClick={navigateHandler}
           >
             Completed
           </button>
         </div>
-        <button className="btn clear-btn" onClick={Clear}>
-          Clear Completed
-        </button>
       </div>
-    </div>
+    </>
   );
 };
 export default List;

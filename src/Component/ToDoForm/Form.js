@@ -2,7 +2,7 @@ import { useState } from "react";
 import CheckCircle from "../CheckCircle/CheckCircle";
 import "./Form.css";
 import sendIcon from "../../assests/send-svgrepo-com.svg";
-const TodoForm = ({ AddTodo }) => {
+const TodoForm = ({ AddTodo, dark }) => {
   const [completed, setCompleted] = useState(false);
   const [todo, setTodo] = useState("");
   const clickHandler = () => {
@@ -31,7 +31,7 @@ const TodoForm = ({ AddTodo }) => {
     setTodo(event.target.value);
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form className={`${dark ? "" : "light"}`} onSubmit={submitHandler}>
       <CheckCircle complete={completed} Onclick={clickHandler} />
 
       <input
@@ -39,6 +39,7 @@ const TodoForm = ({ AddTodo }) => {
         placeholder="Create a new todo..."
         value={todo}
         onChange={ChangeHandler}
+        className={`${dark ? "" : "light"}`}
       ></input>
       <button className="send-btn" type="submit">
         <img className="send-icon" src={sendIcon} alt="send icon" />
