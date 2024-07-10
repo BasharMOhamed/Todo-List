@@ -1,27 +1,24 @@
 import CheckCircle from "../CheckCircle/CheckCircle";
 import "./ListItem.css";
 import crossIcon from "../../assests/icon-cross.svg";
-const ListItem = ({
-  Content,
-  complete,
-  clickHandler,
-  dark,
-  removeTodo,
-  item,
-}) => {
+import { useDispatch, useSelector } from "react-redux";
+import { TodosActions } from "../../Store/Todos-Slice";
+const ListItem = ({ Content, complete, item, index }) => {
+  const dark = useSelector((state) => state.ui.dark);
+  const dispatch = useDispatch();
   return (
     <div
       className={`item ${complete ? "complete" : ""} ${dark ? "" : "light"}`}
     >
       <div className="Content">
-        <CheckCircle complete={complete} Onclick={clickHandler} />
+        <CheckCircle complete={complete} index={index} />
         <p>{Content}</p>
       </div>
       <button
         type="button"
         className="remove-btn"
         onClick={() => {
-          removeTodo(item.id);
+          dispatch(TodosActions.removeTodo(item));
         }}
       >
         <img src={crossIcon} alt="cross icon" />

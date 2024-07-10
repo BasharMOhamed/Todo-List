@@ -4,7 +4,9 @@ import lightBackGround from "../../assests/bg-desktop-light.jpg";
 import "./Main.css";
 import TodoForm from "../ToDoForm/Form";
 import Header from "../Header/Header";
-const Main = ({ Todos, Add, Clear, dark, changeMode, removeTodo }) => {
+import { useSelector } from "react-redux";
+const Main = () => {
+  const dark = useSelector((state) => state.ui.dark);
   return (
     <div className={`container ${dark ? "" : "light"}`}>
       {dark ? (
@@ -13,9 +15,9 @@ const Main = ({ Todos, Add, Clear, dark, changeMode, removeTodo }) => {
         <img src={lightBackGround} alt="background" className="bg-image" />
       )}
       <div className="TodoList-container">
-        <Header dark={dark} changeMode={changeMode} />
-        <TodoForm AddTodo={Add} dark={dark} />
-        <List list={Todos} Clear={Clear} dark={dark} removeTodo={removeTodo} />
+        <Header />
+        <TodoForm />
+        <List />
       </div>
     </div>
   );

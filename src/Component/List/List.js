@@ -1,7 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import ListItem from "../ListItem/ListItem";
 import "./List.css";
 import { useState, useEffect } from "react";
-const List = ({ list, Clear, dark, removeTodo }) => {
+import { TodosActions } from "../../Store/Todos-Slice";
+const List = () => {
+  const dark = useSelector((state) => state.ui.dark);
+  const list = useSelector((state) => state.Todos.Todos);
+  const dispatch = useDispatch();
+
   const [active, setActive] = useState(1);
   const [filteredList, setFilteredList] = useState(list);
 
@@ -26,26 +32,17 @@ const List = ({ list, Clear, dark, removeTodo }) => {
     }
   };
 
-  const clickHandler = (index) => {
-    const newList = [...filteredList];
-    newList[index].complete = !newList[index].complete;
-    setFilteredList(newList);
-  };
-
   return (
     <>
       <div className={`List`}>
         {filteredList.map((item, index) => {
-          console.log(item.complete);
           return (
             <li>
               <ListItem
                 item={item}
                 Content={item.Content}
                 complete={item.complete}
-                clickHandler={() => clickHandler(index)}
-                dark={dark}
-                removeTodo={removeTodo}
+                index={index}
               />
             </li>
           );
@@ -86,7 +83,7 @@ const List = ({ list, Clear, dark, removeTodo }) => {
           </div>
           <button
             className={`btn clear-btn ${dark ? "" : "light-btns"}`}
-            onClick={Clear}
+            onClick={() => dispatch(TodosActions.clearCompleted())}
           >
             Clear Completed
           </button>

@@ -2,7 +2,13 @@ import { useState } from "react";
 import CheckCircle from "../CheckCircle/CheckCircle";
 import "./Form.css";
 import sendIcon from "../../assests/send-svgrepo-com.svg";
-const TodoForm = ({ AddTodo, dark }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { TodosActions } from "../../Store/Todos-Slice";
+const TodoForm = () => {
+  const dark = useSelector((state) => state.ui.dark);
+  const id = useSelector((state) => state.Todos.Todos).length + 1;
+  const dispatch = useDispatch();
+
   const [completed, setCompleted] = useState(false);
   const [todo, setTodo] = useState("");
   const clickHandler = () => {
@@ -13,10 +19,11 @@ const TodoForm = ({ AddTodo, dark }) => {
     event.preventDefault();
     if (todo.trim().length > 0) {
       let item = {
+        id: id,
         Content: todo,
         complete: completed,
       };
-      AddTodo(item);
+      dispatch(TodosActions.addTodo(item));
       setTodo("");
       setCompleted(false);
     }
